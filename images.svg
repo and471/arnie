@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24"
+   height="24"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="images.svg"
+   inkscape:export-filename="/home/andrew/Desktop/split-horizontal.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#242424"
+     bordercolor="#000000"
+     borderopacity="1"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="16"
+     inkscape:cx="12.091498"
+     inkscape:cy="14.218772"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:showpageshadow="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="679"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1028.3622)">
+    <g
+       id="g3799"
+       transform="matrix(-1,0,0,-1,24.000008,2080.7244)">
+      <g
+         transform="matrix(1,0,0,0.90909019,1,94.579138)"
+         id="g3757">
+        <rect
+           ry="0"
+           rx="0"
+           y="1029.3622"
+           x="3"
+           height="22"
+           width="6"
+           id="rect2987"
+           style="fill:#eeeeec;fill-opacity:1" />
+        <rect
+           style="fill:#eeeeec;fill-opacity:1"
+           id="rect2997"
+           width="22"
+           height="5"
+           x="-1051.3622"
+           y="1"
+           rx="1"
+           ry="1"
+           transform="matrix(0,-1,1,0,0,0)" />
+      </g>
+      <use
+         x="0"
+         y="0"
+         xlink:href="#g3757"
+         id="use3034"
+         transform="matrix(-1,0,0,1,24,0)"
+         width="24"
+         height="24" />
+    </g>
+  </g>
+</svg>
