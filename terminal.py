@@ -31,10 +31,9 @@ class Terminal(Vte.Terminal):
 
         split_pane = SplitPane(self.parent)
         split_pane.set_orientation(orientation)
-
-        if (isinstance(self.parent, SplitPane)):
-            self.parent.replace(self, split_pane);
-
+        
+        self.parent.replace(self, split_pane);
+        
         # Put current terminal into split pane
         split_pane.add1(self)
         self.parent = split_pane
@@ -44,23 +43,26 @@ class Terminal(Vte.Terminal):
         split_pane.add2(new_terminal)
         new_terminal.parent = split_pane
         
-
         split_pane.divide_in_half(size)
 
-        return (split_pane, new_terminal)
+        return new_terminal
         
     """
     Destroy the current terminal, returning the terminal which should now be active
     """    
     def close(self):
-        if (isinstance(self.parent, SplitPane)):
-            other_child = self.parent.get_other_child(self)
-            
-            self.parent.remove(self)
-            self.parent.remove(other_child)
-            
-            if (isinstance(self.parent.parent, SplitPane)):
-                self.parent.parent.replace(self.parent, other_child);
+        other_child = self.parent.get_other_child(self)
 
+        self.parent.remove(self)
+        self.parent.remove(other_child)
+        
+        self.parent.parent.replace(self.parent, other_child);
+
+        self.parent.destroy()
         self.destroy()
+        
+        if (not isinstance(other_child, Terminal)):
+            return other_child.get_nearest_terminal()
+        
+        return other_child
 

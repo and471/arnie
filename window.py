@@ -5,6 +5,7 @@ from gi.repository import GLib
 import os
 
 from terminal import Terminal
+from splitpane import SplitPane, SinglePane
 
 class Window(Gtk.Window, GObject.GObject):
     __gsignals__ = {
@@ -71,17 +72,12 @@ class Window(Gtk.Window, GObject.GObject):
     def _on_button_close_clicked(self, widget):
         if (self.active_terminal == None):
             return
+            
+        if (self.active_terminal == self.pane.get_child()):
+            Gtk.main_quit()
+            return
         
-        if (self.toplevel == self.active_terminal):
-            # When trying to remove toplevel
-            self.remove(self.toplevel)
-            # Make sure we add a new toplevel
-            self.toplevel = self.active_terminal.close()
-            self.toplevel.parent = None
-            self.add(self.toplevel)
-            self._set_active_terminal(self.toplevel)
-        else:
-            self._set_active_terminal(self.active_terminal.close())
+        self._set_active_terminal(self.active_terminal.close())
         
     """
     Creates, packs, focuses and returns a new terminal
@@ -91,18 +87,15 @@ class Window(Gtk.Window, GObject.GObject):
     
         if to_split == None:
             # If there are no terminals
-            self.toplevel = new_terminal = Terminal(self)
-            self.toplevel.parent = self
-            self.add(new_terminal)
+            new_terminal = Terminal(self)
+            self.pane = SinglePane()
+            new_terminal.parent = self.pane
+            self.pane.add(new_terminal)
+            self.add(self.pane)
             self._set_active_terminal(new_terminal)
         else:
             # Otherwise create one by splitting
-            (split_pane, new_terminal) = to_split.split(orientation)
-            
-            if (to_split == self.toplevel):
-                self.add(split_pane)
-                self.toplevel = split_pane;
-                split_pane.parent = self
+            new_terminal = to_split.split(orientation)
                 
         
         new_terminal.connect("focus-in-event", self._on_terminal_focused)
@@ -121,11 +114,16 @@ class Window(Gtk.Window, GObject.GObject):
             self.window_title_changed_signal = None
     
         self.active_terminal = terminal;
-        
+         
+        if (terminal == None):
+            return
+
         # Change window subtitle when directory changes
         self.window_changed_signal = self.active_terminal.connect("window-title-changed",
             self._on_active_terminal_title_changed)
         self._on_active_terminal_title_changed(None)
+        
+        self.active_terminal.grab_focus()
         
     """
     Sets the headerbar's subtitle and window's title to be the working directory of the active terminal
